@@ -21,7 +21,7 @@ animations = [ {
 radius = 26.0
 
 [node name="Player" type="Area2D"]
-position = Vector2( 187, 289 )
+position = Vector2( 187, 292 )
 script = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -32,3 +32,5 @@ animation = "Walk"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2 )
 shape = SubResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]

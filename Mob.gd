@@ -1,6 +1,5 @@
 extends RigidBody2D
 
-
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -10,9 +9,12 @@ extends RigidBody2D
 func _ready():
 	$AnimatedSprite.playing = true
 	var mob_types = $AnimatedSprite.frames.get_animation_names()
-	$AnimatedSprite.animation = mob_types[randi() % mob_types.size()]
-	pass # Replace with function body.
 
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	$AnimatedSprite.animation = mob_types[rng.randf_range(0, mob_types.size())]
+	
+	#print($AnimatedSprite.animation)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -21,4 +23,3 @@ func _ready():
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
-	pass # Replace with function body.
